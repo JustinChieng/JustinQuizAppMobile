@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/loginFragment">
+
+    <action android:id="@+id/toLogin"
+        app:destination="@+id/loginFragment"/>
+
+    <action android:id="@+id/toStudentHome"
+        app:destination="@+id/studentHomeFragment"/>
+
+    <action android:id="@+id/toTeacherHome"
+        app:destination="@+id/teacherHomeFragment"/>
+
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.justin.justinquizapp21.ui.screens.login.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_login_to_register"
+            app:destination="@id/registerFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/registerFragment"
+        android:name="com.justin.justinquizapp21.ui.screens.register.RegisterFragment"
+        android:label="fragment_register"
+        tools:layout="@layout/fragment_register" />
+    <fragment
+        android:id="@+id/studentHomeFragment"
+        android:name="com.justin.justinquizapp21.ui.screens.student.StudentHomeFragment"
+        android:label="fragment_student_home"
+        tools:layout="@layout/fragment_student_home" >
+
+        <action
+            android:id="@+id/action_studenthome_to_login"
+            app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_studentHomeFragment_to_quizHomeFragment"
+            app:destination="@id/quizHomeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/teacherHomeFragment"
+        android:name="com.justin.justinquizapp21.ui.screens.teacher.TeacherHomeFragment"
+        android:label="fragment_teacher_home"
+        tools:layout="@layout/fragment_teacher_home" >
+        <action
+            android:id="@+id/action_teacherHomeFragment_to_addQuizFragment"
+            app:destination="@id/addQuizFragment" />
+        <action
+            android:id="@+id/action_teacherHomeFragment_to_LoginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/quizHomeFragment"
+        android:name="com.justin.justinquizapp21.ui.screens.quiz.QuizHomeFragment"
+        android:label="fragment_quiz_home"
+        tools:layout="@layout/fragment_quiz_home" >
+        <action
+            android:id="@+id/action_quizHomeFragment_to_questionFragment"
+            app:destination="@id/questionFragment" />
+        <argument
+            android:name="quizId"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/questionFragment"
+        android:name="com.justin.justinquizapp21.ui.screens.questions.QuestionFragment"
+        android:label="fragment_question"
+        tools:layout="@layout/fragment_question" >
+        <action
+            android:id="@+id/action_questionFragment_to_resultFragment"
+            app:destination="@id/resultFragment" />
+        <argument
+            android:name="quizId"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/resultFragment"
+        android:name="com.justin.justinquizapp21.ui.screens.resultQuiz.ResultFragment"
+        android:label="fragment_result"
+        tools:layout="@layout/fragment_result" >
+        <argument
+            android:name="quizId"
+            app:argType="string" />
+        <argument
+            android:name="score"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_resultFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_resultFragment_to_studentHomeFragment"
+            app:destination="@id/studentHomeFragment" />
+
+
+    </fragment>
+    <fragment
+        android:id="@+id/addQuizFragment"
+        android:name="com.justin.justinquizapp21.ui.screens.addQuiz.AddQuizFragment"
+        android:label="fragment_add_quiz"
+        tools:layout="@layout/fragment_add_quiz" >
+        <action
+            android:id="@+id/action_addQuizFragment_to_teacherHomeFragment"
+            app:destination="@id/teacherHomeFragment" />
+        <action
+            android:id="@+id/action_addQuizFragment_to_addQuestionFragment"
+            app:destination="@id/addQuestionFragment" />
+        <argument
+            android:name="quizId"
+            app:argType="string" />
+
+
+    </fragment>
+    <fragment
+        android:id="@+id/addQuestionFragment"
+        android:name="com.justin.justinquizapp21.ui.screens.addQuestion.AddQuestionFragment"
+        android:label="AddQuestionFragment"
+        tools:layout="@layout/fragment_add_question">
+        <argument
+            android:name="quizId"
+            app:argType="string" />
+    </fragment>
+</navigation>
